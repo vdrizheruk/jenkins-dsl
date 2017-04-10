@@ -24,11 +24,10 @@ job('imagebuild-dsl') {
             noActivity(300)
             failBuild()
         }
+        timestamps()
     }
 
     steps {
         shell(readFileFromWorkspace('jobs/build.sh'))
     }
-
-
 }
