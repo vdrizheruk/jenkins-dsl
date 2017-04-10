@@ -1,5 +1,6 @@
 job('imagebuild-dsl') {
     description('Build Application Image')
+    logRotator(3,3)
     parameters {
         stringParam('GIT_REPOSITORY_URI')
         stringParam('GIT_REPOSITORY_BRANCH')
