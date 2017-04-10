@@ -29,5 +29,17 @@ job('imagebuild-dsl') {
 
     steps {
         shell(readFileFromWorkspace('jobs/build.sh'))
+
+        conditionalSteps {
+            condition {
+                and {
+                    status('SUCCESS', 'SUCCESS')
+                }
+            }
+            runner('Stable')
+            steps {
+                shell("echo success-build")
+            }
+        }
     }
 }
