@@ -32,9 +32,7 @@ job('imagebuild-dsl') {
 
         conditionalSteps {
             condition {
-                and {
-                    status('SUCCESS', 'SUCCESS')
-                }
+                status('SUCCESS', 'SUCCESS')
             }
             runner('Run')
             steps {
