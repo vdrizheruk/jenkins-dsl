@@ -20,6 +20,6 @@ job('imagebuild-dsl') {
     concurrentBuild()
 
     steps {
-        shell('date')
+        shell(readFileFromWorkspace('jobs/build.sh'))
     }
 }
