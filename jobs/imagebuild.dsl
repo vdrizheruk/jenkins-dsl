@@ -16,4 +16,5 @@ job('imagebuild-dsl') {
         stringParam('OWNER_APIKEY')
         stringParam('MGMT_URL')
     }
+    concurrentBuild()
 }
