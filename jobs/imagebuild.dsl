@@ -19,7 +19,16 @@ job('imagebuild-dsl') {
     }
     concurrentBuild()
 
+    wrappers {
+        timeout {
+            noActivity(300)
+            failBuild()
+        }
+    }
+
     steps {
         shell(readFileFromWorkspace('jobs/build.sh'))
     }
+
+
 }
