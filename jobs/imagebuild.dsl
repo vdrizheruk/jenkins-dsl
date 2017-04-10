@@ -1,7 +1,7 @@
 job('imagebuild-dsl') {
     description('Build Application Image')
-    environmentVariables {
-        env('GIT_REPOSITORY_URI','')
-        env('GIT_REPOSITORY_BRANCH','')
+    parameters {
+        stringParam('GIT_REPOSITORY_URI','')
+        stringParam('GIT_REPOSITORY_BRANCH','')
     }
 }
