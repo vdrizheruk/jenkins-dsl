@@ -1,3 +1,7 @@
 job('imagebuild-dsl') {
-    description('My first job')
+    description('Build Application Image')
+    environmentVariables {
+        env('GIT_REPOSITORY_URI')
+        env('GIT_REPOSITORY_BRANCH')
+    }
 }
