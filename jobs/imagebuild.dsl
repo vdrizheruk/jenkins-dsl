@@ -36,7 +36,7 @@ job('imagebuild-dsl') {
                     status('SUCCESS', 'SUCCESS')
                 }
             }
-            runner('Stable')
+            runner('Run')
             steps {
                 shell("echo success-build")
             }
