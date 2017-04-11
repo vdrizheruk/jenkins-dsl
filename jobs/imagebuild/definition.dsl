@@ -44,7 +44,7 @@ job('imagebuild') {
         conditionalSteps {
             condition {
                and {
-                    status('ABORTED', 'UNSTABLE')
+                    status('ABORTED', 'FAILURE')
                }
             }
             runner('Unstable')
