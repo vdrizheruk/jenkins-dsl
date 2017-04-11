@@ -29,25 +29,25 @@ job('imagebuild') {
 
     steps {
         shell(readFileFromWorkspace('jobs/imagebuild/build/run.sh'))
+    }
 
-        conditionalSteps {
-            condition {
-                status('SUCCESS', 'SUCCESS')
-            }
-            runner('Run')
-            steps {
-                shell(readFileFromWorkspace('jobs/imagebuild/build/conditions/success.sh'))
-            }
+    conditionalSteps {
+        condition {
+            status('SUCCESS', 'SUCCESS')
         }
+        runner('Run')
+        steps {
+            shell(readFileFromWorkspace('jobs/imagebuild/build/conditions/success.sh'))
+        }
+    }
 
-        conditionalSteps {
-            condition {
-                status('ABORTED', 'UNSTABLE')
-            }
-            runner('Unstable')
-            steps {
-                shell(readFileFromWorkspace('jobs/imagebuild/build/conditions/failed.sh'))
-            }
+    conditionalSteps {
+        condition {
+            status('ABORTED', 'UNSTABLE')
+        }
+        runner('Unstable')
+        steps {
+            shell(readFileFromWorkspace('jobs/imagebuild/build/conditions/failed.sh'))
         }
     }
 }
