@@ -36,7 +36,6 @@ job('imagebuild') {
             }
             runner('Run')
             steps {
-                shell("echo [Success]")
                 shell(readFileFromWorkspace('jobs/imagebuild/build/conditions/success.sh'))
             }
         }
@@ -47,7 +46,7 @@ job('imagebuild') {
             }
             runner('Fail')
             steps {
-                shell("echo [Failed]")
+                shell("echo Failed")
                 shell(readFileFromWorkspace('jobs/imagebuild/build/conditions/failed.sh'))
             }
         }
