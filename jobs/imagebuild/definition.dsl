@@ -30,22 +30,23 @@ job('imagebuild') {
     steps {
         shell(readFileFromWorkspace('jobs/imagebuild/build/run.sh'))
 
-        conditionalStep {
-            condition {
-                status('SUCCESS', 'SUCCESS')
-            }
-            steps {
-                shell(readFileFromWorkspace('jobs/imagebuild/build/conditions/success.sh'))
-            }
-        }
 
-        conditionalStep {
-            condition {
-                status('ABORTED', 'UNSTABLE')
-            }
-            steps {
-                shell(readFileFromWorkspace('jobs/imagebuild/build/conditions/failed.sh'))
-            }
+    }
+    conditionalStep {
+        condition {
+            status('SUCCESS', 'SUCCESS')
+        }
+        steps {
+            shell(readFileFromWorkspace('jobs/imagebuild/build/conditions/success.sh'))
+        }
+    }
+
+    conditionalStep {
+        condition {
+            status('ABORTED', 'UNSTABLE')
+        }
+        steps {
+            shell(readFileFromWorkspace('jobs/imagebuild/build/conditions/failed.sh'))
         }
     }
 }
