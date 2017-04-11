@@ -16,6 +16,6 @@ docker run --name "orobuild_${BUILD_NUMBER}" --privileged \
 -e "RSA_KEY_FINGERPRINT=${RSA_KEY_FINGERPRINT}" \
 -e "VAULT_ADDR=${VAULT_ADDR}" \
 "${BUILDER_IMAGE}" && exit 0 || {
-  exit 1
+  exit 2
 }
 # exit 1 need to identify failed job by post build task

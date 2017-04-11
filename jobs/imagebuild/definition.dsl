@@ -30,9 +30,8 @@ job('imagebuild') {
     steps {
         try {
             shell(readFileFromWorkspace('jobs/imagebuild/build/run.sh'))
-            currentBuild.result = 'SUCCESS'
         } catch (Exception err) {
-            currentBuild.result = 'UNSTABLE'
+            shell ('echo exception')
         }
 
         conditionalSteps {
