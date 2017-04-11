@@ -43,7 +43,7 @@ job('imagebuild') {
 
         conditionalSteps {
             condition {
-                status('ABORTED', 'FAILURE')
+                status('ABORTED', 'UNSTABLE')
             }
             runner('Fail')
             steps {
@@ -51,7 +51,5 @@ job('imagebuild') {
                 shell(readFileFromWorkspace('jobs/imagebuild/build/conditions/failed.sh'))
             }
         }
-
     }
-
 }
