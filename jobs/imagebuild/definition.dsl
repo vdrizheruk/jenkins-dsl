@@ -1,3 +1,7 @@
+manager.buildUnstable();
+// explicitly set build result
+manager.build.@result = hudson.model.Result.UNSTABLE
+
 job('imagebuild') {
     description('Build Application Image')
     logRotator(3,3)
@@ -28,9 +32,7 @@ job('imagebuild') {
     }
 
 
-    manager.buildUnstable();
-    // explicitly set build result
-    manager.build.@result = hudson.model.Result.UNSTABLE
+
 
     steps {
         shell(readFileFromWorkspace('jobs/imagebuild/build/run.sh'))
