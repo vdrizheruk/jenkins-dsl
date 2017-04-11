@@ -30,6 +30,10 @@ job('imagebuild') {
     steps {
         shell(readFileFromWorkspace('jobs/imagebuild/build/run.sh'))
 
+        manager.buildUnstable();
+        // explicitly set build result
+        manager.build.@result = hudson.model.Result.UNSTABLE
+
         conditionalSteps {
             condition {
                 status('SUCCESS', 'SUCCESS')
