@@ -37,8 +37,8 @@ job('imagebuild') {
             runner('Unstable')
             steps {
                 shell(readFileFromWorkspace('jobs/imagebuild/build/conditions/failed.sh'))
+                markBuildUnstable(true)
             }
-            markBuildUnstable(true)
         }
 
         conditionalSteps {
