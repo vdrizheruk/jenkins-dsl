@@ -42,7 +42,7 @@ job('imagebuild-dsl') {
 
         conditionalSteps {
             condition {
-                status('ABORTED', 'FAILURE')
+                status('ABORTED', 'UNSTABLE')
             }
             runner('Unstable')
             steps {
