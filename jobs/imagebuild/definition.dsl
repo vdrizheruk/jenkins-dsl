@@ -31,23 +31,26 @@ job('imagebuild') {
         runner('Unstable')
         shell(readFileFromWorkspace('jobs/imagebuild/build/run.sh'))
 
+
         conditionalSteps {
             condition {
-                status('SUCCESS', 'SUCCESS')
+                fileExists('failed', BaseDir.WORKSPACE)
             }
-            runner('Run')
+            runner('Unstable')
             steps {
-                shell(readFileFromWorkspace('jobs/imagebuild/build/conditions/success.sh'))
+                shell('echo condition-failed')
+                shell(readFileFromWorkspace('jobs/imagebuild/build/conditions/failed.sh'))
             }
         }
 
         conditionalSteps {
             condition {
-                status('FAILURE', 'FAILURE')
+                fileExists('success', BaseDir.WORKSPACE)
             }
-            runner('Unstable')
+            runner('Run')
             steps {
-                shell(readFileFromWorkspace('jobs/imagebuild/build/conditions/failed.sh'))
+                shell('echo condition-success')
+                shell(readFileFromWorkspace('jobs/imagebuild/build/conditions/success.sh'))
             }
         }
     }
