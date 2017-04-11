@@ -28,7 +28,7 @@ job('imagebuild-dsl') {
     }
 
     steps {
-        shell(readFileFromWorkspace('jobs/build.sh'))
+        shell(readFileFromWorkspace('jobs/imagebuild/build/run.sh'))
 
         conditionalSteps {
             condition {
@@ -36,7 +36,7 @@ job('imagebuild-dsl') {
             }
             runner('Run')
             steps {
-                shell(readFileFromWorkspace('jobs/success-build.sh'))
+                shell(readFileFromWorkspace('jobs/imagebuild/build/conditions/success.sh'))
             }
         }
 
@@ -46,7 +46,7 @@ job('imagebuild-dsl') {
             }
             runner('Unstable')
             steps {
-                shell(readFileFromWorkspace('jobs/failed-build.sh'))
+                shell(readFileFromWorkspace('jobs/imagebuild/build/conditions/failed.sh'))
             }
         }
     }
