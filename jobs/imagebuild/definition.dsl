@@ -1,5 +1,7 @@
 job('imagebuild') {
     description('Build Application Image')
+    manager.addShortText("deployed")
+
     logRotator(3,3)
     parameters {
         stringParam('GIT_REPOSITORY_URI')
