@@ -36,7 +36,7 @@ job('imagebuild-dsl') {
             }
             runner('Run')
             steps {
-                shell("echo success-build")
+                shell(readFileFromWorkspace('jobs/success-build.sh'))
             }
         }
     }
