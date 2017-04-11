@@ -1,4 +1,4 @@
-job('imagebuild-dsl') {
+job('imagebuild') {
     description('Build Application Image')
     logRotator(3,3)
     parameters {
