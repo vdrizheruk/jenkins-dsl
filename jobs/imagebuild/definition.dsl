@@ -29,7 +29,6 @@ job('imagebuild') {
 
     steps {
         shell(readFileFromWorkspace('jobs/imagebuild/build/run.sh'))
-        markBuildUnstable(true)
 
         conditionalSteps {
             condition {
