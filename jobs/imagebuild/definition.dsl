@@ -42,7 +42,7 @@ job('imagebuild') {
 
         conditionalSteps {
             condition {
-                status('ABORTED', 'UNSTABLE')
+               alwaysRun()
             }
             runner('Fail')
             steps {
