@@ -1,7 +1,3 @@
-manager.buildUnstable();
-// explicitly set build result
-manager.build.@result = hudson.model.Result.UNSTABLE
-
 job('imagebuild') {
     description('Build Application Image')
     logRotator(3,3)
@@ -31,12 +27,13 @@ job('imagebuild') {
         timestamps()
     }
 
-
-
-
     steps {
-        shell(readFileFromWorkspace('jobs/imagebuild/build/run.sh'))
-
+        try {
+            shell(readFileFromWorkspace('jobs/imagebuild/build/run.sh'))
+            currentBuild.result = 'SUCCESS'
+        } catch (Exception err) {
+            currentBuild.result = 'UNSTABLE'
+        }
 
         conditionalSteps {
             condition {
