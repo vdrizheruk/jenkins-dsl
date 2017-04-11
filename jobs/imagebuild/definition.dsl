@@ -29,7 +29,7 @@ job('imagebuild') {
 
     steps {
         shell(readFileFromWorkspace('jobs/imagebuild/build/run.sh'))
-        buildUnstable(null,null)
+
 
         conditionalSteps {
             condition {
