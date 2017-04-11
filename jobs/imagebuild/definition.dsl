@@ -1,7 +1,5 @@
 job('imagebuild') {
     description('Build Application Image')
-    manager.addShortText("deployed")
-
     logRotator(3,3)
     parameters {
         stringParam('GIT_REPOSITORY_URI')
@@ -30,11 +28,8 @@ job('imagebuild') {
     }
 
     steps {
-        try {
-            shell(readFileFromWorkspace('jobs/imagebuild/build/run.sh'))
-        } catch (Exception err) {
-            shell ('echo exception')
-        }
+        runner('Unstable')
+        shell(readFileFromWorkspace('jobs/imagebuild/build/run.sh'))
 
         conditionalSteps {
             condition {
@@ -50,7 +45,7 @@ job('imagebuild') {
             condition {
                 status('FAILURE', 'FAILURE')
             }
-            runner('Fail')
+            runner('Unstable')
             steps {
                 shell(readFileFromWorkspace('jobs/imagebuild/build/conditions/failed.sh'))
             }
