@@ -39,5 +39,15 @@ job('imagebuild-dsl') {
                 shell(readFileFromWorkspace('jobs/success-build.sh'))
             }
         }
+
+        conditionalSteps {
+            condition {
+                status('ABORTED', 'FAILURE')
+            }
+            runner('Unstable')
+            steps {
+                shell(readFileFromWorkspace('jobs/failed-build.sh'))
+            }
+        }
     }
 }
