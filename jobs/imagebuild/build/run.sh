@@ -1,3 +1,5 @@
+rm -f ./success
+rm -f ./failed
 echo "${BUILD_URL}consoleText"
 echo "---image-build-start---"
 gcloud docker -- pull "${BUILDER_IMAGE}"
